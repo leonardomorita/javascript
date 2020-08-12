@@ -87,11 +87,8 @@ document.querySelector('#service-next').onclick = function () {
 };
 
 // Data Footer
+let current_year = new Date;
 
-
-
-  
-   
-
-
-   
+// Retorna o ano atual
+current_year = current_year.getFullYear();
+document.querySelector('#current_year').innerHTML = current_year;
