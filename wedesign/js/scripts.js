@@ -60,6 +60,31 @@ var our_services = [
   
 ];
 
+var serviceIndex = 0;
+
+// Setar para voltar um slide
+document.querySelector('#service-previous').onclick = function () {
+  if (serviceIndex === 0) {
+    serviceIndex = our_services.length - 1;
+  } else {
+    serviceIndex -= 1;
+  }
+
+  document.querySelector('#service-title').innerHTML = our_services[serviceIndex].title;
+  document.querySelector('#service-text').innerHTML = our_services[serviceIndex].text;
+};
+
+// Setar para ir para o próximo slide
+document.querySelector('#service-next').onclick = function () {
+  if (serviceIndex === our_services.length - 1) {
+    serviceIndex = 0;
+  } else {
+    serviceIndex += 1;
+  }
+
+  document.querySelector('#service-title').innerHTML = our_services[serviceIndex].title;
+  document.querySelector('#service-text').innerHTML = our_services[serviceIndex].text;
+};
 
 // Data Footer
 
