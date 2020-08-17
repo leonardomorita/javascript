@@ -247,3 +247,10 @@
 //         }
 //     }
 // }
+
+// Aula 24 - BOM (Browser Object Model)
+window.onmousemove = function(event) {
+    if (event.pageY < 5) {
+        alert('Hi');
+    }
+};
