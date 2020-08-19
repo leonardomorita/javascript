@@ -169,7 +169,6 @@
 //     j++;
 // } while (j <= 1);
 
-// Revisar
 // 21 - Condicionais
 // let idade = 17;
 // if (idade < 18) {
@@ -249,8 +248,58 @@
 // }
 
 // Aula 24 - BOM (Browser Object Model)
-window.onmousemove = function(event) {
-    if (event.pageY < 5) {
-        alert('Hi');
-    }
+// window.onmousemove = function(event) {
+//     if (event.pageY < 5) {
+//         alert('Hi');
+//     }
+// };
+
+// Aula 25 - Local Storage
+// Salvar uma informação dentro do local storage que fica localizado dentro do navegador
+// window.localStorage.setItem('salvaNome', 'Maria');
+// Formas de acessar o objeto localStorage
+// console.log(localStorage);
+// console.log(localStorage.salvaNome); // ou "console.log(localStorage['salvaNome']);"
+
+function ocultarFormulario() {
+    document.getElementById('name-field').style.display = 'none';
+}
+
+function atualizarMensagem() {
+    document.getElementById('welcome-text').innerHTML = 'Olá ' + window.localStorage.nome + ", tudo bem?";
+    document.getElementById('not-me').innerHTML = 'Não é ' + window.localStorage.nome + "?";
+}
+
+function exibirMensagem() {
+    document.getElementById('welcome-area').style.display = 'initial';
+}
+
+document.getElementById('enviar-nome').onclick = function() {
+    // Salvar o nome digitado pelo usuário dentro do local storage
+    let nome = document.getElementById('nome-usuario').value;
+    window.localStorage.setItem('nome', nome);
+
+    ocultarFormulario();
+
+    atualizarMensagem();
+    exibirMensagem();
+};
+
+// Se a chave já está armazenado dentro do local storage
+if (window.localStorage.nome) {
+    ocultarFormulario();
+
+    atualizarMensagem();
+    exibirMensagem();
+}
+
+document.getElementById('not-me').onclick = function() {
+    // Remover a chave 'nome' dentro do local storage
+    window.localStorage.removeItem('nome');
+
+    // Ocultar a mensagem
+    document.getElementById('welcome-area').style.display = 'none';
+
+    // Exibir o formulário
+    document.getElementById('name-field').style.display = 'initial';
 };
