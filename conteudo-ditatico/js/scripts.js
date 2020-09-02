@@ -305,19 +305,51 @@
 // };
 
 // Aula 26 - Data e Hora
-let dataAtual = new Date();
-let dataEspecifica = new Date(2020, 8, 01, 12, 30, 00);
-let dataString = new Date( "2020-09-02" );
+// let dataAtual = new Date();
+// let dataEspecifica = new Date(2020, 8, 01, 12, 30, 00);
+// let dataString = new Date( "2020-09-02" );
 
-let dataEnvio = new Date( "2018-03-20" );
-let dataEntrega = new Date( "2018-04-06" );
-const tempoEnvio = dataEnvio.getTime();
-const tempoEntrega = dataEntrega.getTime();
-document.getElementById('dias_entrega').innerHTML = (tempoEntrega - tempoEnvio) / 86400000;
+// let dataEnvio = new Date( "2018-03-20" );
+// let dataEntrega = new Date( "2018-04-06" );
+// const tempoEnvio = dataEnvio.getTime();
+// const tempoEntrega = dataEntrega.getTime();
+// document.getElementById('dias_entrega').innerHTML = (tempoEntrega - tempoEnvio) / 86400000;
 
-console.log(dataAtual);
-console.log(dataAtual.getDate());
-console.log(dataAtual.getTime() / 31536000000);
+// console.log(dataAtual);
+// console.log(dataAtual.getDate());
+// console.log(dataAtual.getTime() / 31536000000);
 
-console.log(dataEspecifica);
-console.log(dataString);
+// console.log(dataEspecifica);
+// console.log(dataString);
+
+// Aula 27 - Métodos de Tempo
+// document.getElementById('mostrar-loader').onclick = function() {
+//     document.getElementById('spinner-loader').style.display = 'initial';
+
+//     window.setTimeout(function() {
+//         document.getElementById('spinner-loader').style.display = 'none';
+//     }, 5000);
+// };
+
+// let contador = 0;
+
+// let intervalo = window.setInterval(function() {
+//     console.log(contador);
+//     contador++;
+
+//     if (contador > 10) {
+//         window.clearInterval(intervalo);
+//     }
+// }, 1000);
+
+let data = new Date();
+// console.log(data);
+// console.log(data.getSeconds());
+// data.setSeconds(120);
+// console.log(data);
+
+let relogio = document.getElementById('relogio');
+window.setInterval(function() {
+    data.setSeconds(data.getSeconds() + 1);
+    relogio.innerHTML = ( data.getHours() + ':' + data.getMinutes() + ':' + data.getSeconds() );
+}, 1000);
