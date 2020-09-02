@@ -261,45 +261,63 @@
 // console.log(localStorage);
 // console.log(localStorage.salvaNome); // ou "console.log(localStorage['salvaNome']);"
 
-function ocultarFormulario() {
-    document.getElementById('name-field').style.display = 'none';
-}
+// function ocultarFormulario() {
+//     document.getElementById('name-field').style.display = 'none';
+// }
 
-function atualizarMensagem() {
-    document.getElementById('welcome-text').innerHTML = 'Olá ' + window.localStorage.nome + ", tudo bem?";
-    document.getElementById('not-me').innerHTML = 'Não é ' + window.localStorage.nome + "?";
-}
+// function atualizarMensagem() {
+//     document.getElementById('welcome-text').innerHTML = 'Olá ' + window.localStorage.nome + ", tudo bem?";
+//     document.getElementById('not-me').innerHTML = 'Não é ' + window.localStorage.nome + "?";
+// }
 
-function exibirMensagem() {
-    document.getElementById('welcome-area').style.display = 'initial';
-}
+// function exibirMensagem() {
+//     document.getElementById('welcome-area').style.display = 'initial';
+// }
 
-document.getElementById('enviar-nome').onclick = function() {
-    // Salvar o nome digitado pelo usuário dentro do local storage
-    let nome = document.getElementById('nome-usuario').value;
-    window.localStorage.setItem('nome', nome);
+// document.getElementById('enviar-nome').onclick = function() {
+//     // Salvar o nome digitado pelo usuário dentro do local storage
+//     let nome = document.getElementById('nome-usuario').value;
+//     window.localStorage.setItem('nome', nome);
 
-    ocultarFormulario();
+//     ocultarFormulario();
 
-    atualizarMensagem();
-    exibirMensagem();
-};
+//     atualizarMensagem();
+//     exibirMensagem();
+// };
 
-// Se a chave já está armazenado dentro do local storage
-if (window.localStorage.nome) {
-    ocultarFormulario();
+// // Se a chave já está armazenado dentro do local storage
+// if (window.localStorage.nome) {
+//     ocultarFormulario();
 
-    atualizarMensagem();
-    exibirMensagem();
-}
+//     atualizarMensagem();
+//     exibirMensagem();
+// }
 
-document.getElementById('not-me').onclick = function() {
-    // Remover a chave 'nome' dentro do local storage
-    window.localStorage.removeItem('nome');
+// document.getElementById('not-me').onclick = function() {
+//     // Remover a chave 'nome' dentro do local storage
+//     window.localStorage.removeItem('nome');
 
-    // Ocultar a mensagem
-    document.getElementById('welcome-area').style.display = 'none';
+//     // Ocultar a mensagem
+//     document.getElementById('welcome-area').style.display = 'none';
 
-    // Exibir o formulário
-    document.getElementById('name-field').style.display = 'initial';
-};
+//     // Exibir o formulário
+//     document.getElementById('name-field').style.display = 'initial';
+// };
+
+// Aula 26 - Data e Hora
+let dataAtual = new Date();
+let dataEspecifica = new Date(2020, 8, 01, 12, 30, 00);
+let dataString = new Date( "2020-09-02" );
+
+let dataEnvio = new Date( "2018-03-20" );
+let dataEntrega = new Date( "2018-04-06" );
+const tempoEnvio = dataEnvio.getTime();
+const tempoEntrega = dataEntrega.getTime();
+document.getElementById('dias_entrega').innerHTML = (tempoEntrega - tempoEnvio) / 86400000;
+
+console.log(dataAtual);
+console.log(dataAtual.getDate());
+console.log(dataAtual.getTime() / 31536000000);
+
+console.log(dataEspecifica);
+console.log(dataString);
