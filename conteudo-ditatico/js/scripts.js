@@ -350,24 +350,48 @@
 // }, 1000);
 
 // Aula 28 - Switch
-function valorPedagio(categoria) {
-    switch(categoria) {
-        case '1':
-            return 11.22;
-            break;
-        case '2':
-            return 22.45;
-            break;
-        case '3':
-            return 16.88;
-            break;
-        case '4':
-            return 33.65;
-            break;
-        default:
-            return 'A categoria não foi encontrada.';
+// function valorPedagio(categoria) {
+//     switch(categoria) {
+//         case '1':
+//             return 11.22;
+//             break;
+//         case '2':
+//             return 22.45;
+//             break;
+//         case '3':
+//             return 16.88;
+//             break;
+//         case '4':
+//             return 33.65;
+//             break;
+//         default:
+//             return 'A categoria não foi encontrada.';
+//     }
+// }
+
+// const categoriaVeiculo = '3';
+// console.log(valorPedagio(categoriaVeiculo));
+
+// Aula 29 - Break e Continue
+
+let lista = [ 1, 2, 5 ];
+for ( var a = 0; a < lista.length; a++ ) {
+    if ( lista[a] === 2 ) {
+        console.log('Encontrado');
+        break;
     }
+
+    console.log(a);
 }
 
-const categoriaVeiculo = '3';
-console.log(valorPedagio(categoriaVeiculo));
+let number = 0;
+while ( number < 20 ) {
+    // Quando o 'number' for igual à 3, vai saltar essa iteração, não imprimindo no console
+    if ( number === 3 ) {
+        number++;
+        continue;
+    }
+
+    console.log(number);
+    number++;
+}
