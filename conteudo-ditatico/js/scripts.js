@@ -342,14 +342,32 @@
 //     }
 // }, 1000);
 
-let data = new Date();
-// console.log(data);
-// console.log(data.getSeconds());
-// data.setSeconds(120);
-// console.log(data);
+// let data = new Date();
+// let relogio = document.getElementById('relogio');
+// window.setInterval(function() {
+//     data.setSeconds(data.getSeconds() + 1);
+//     relogio.innerHTML = ( data.getHours() + ':' + data.getMinutes() + ':' + data.getSeconds() );
+// }, 1000);
 
-let relogio = document.getElementById('relogio');
-window.setInterval(function() {
-    data.setSeconds(data.getSeconds() + 1);
-    relogio.innerHTML = ( data.getHours() + ':' + data.getMinutes() + ':' + data.getSeconds() );
-}, 1000);
+// Aula 28 - Switch
+function valorPedagio(categoria) {
+    switch(categoria) {
+        case '1':
+            return 11.22;
+            break;
+        case '2':
+            return 22.45;
+            break;
+        case '3':
+            return 16.88;
+            break;
+        case '4':
+            return 33.65;
+            break;
+        default:
+            return 'A categoria não foi encontrada.';
+    }
+}
+
+const categoriaVeiculo = '3';
+console.log(valorPedagio(categoriaVeiculo));
