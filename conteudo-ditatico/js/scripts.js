@@ -374,24 +374,47 @@
 
 // Aula 29 - Break e Continue
 
-let lista = [ 1, 2, 5 ];
-for ( var a = 0; a < lista.length; a++ ) {
-    if ( lista[a] === 2 ) {
-        console.log('Encontrado');
-        break;
-    }
+// let lista = [ 1, 2, 5 ];
+// for ( var a = 0; a < lista.length; a++ ) {
+//     if ( lista[a] === 2 ) {
+//         console.log('Encontrado');
+//         break;
+//     }
 
-    console.log(a);
-}
+//     console.log(a);
+// }
 
-let number = 0;
-while ( number < 20 ) {
-    // Quando o 'number' for igual à 3, vai saltar essa iteração, não imprimindo no console
-    if ( number === 3 ) {
-        number++;
-        continue;
-    }
+// let number = 0;
+// while ( number < 20 ) {
+//     // Quando o 'number' for igual à 3, vai saltar essa iteração, não imprimindo no console
+//     if ( number === 3 ) {
+//         number++;
+//         continue;
+//     }
 
-    console.log(number);
-    number++;
-}
+//     console.log(number);
+//     number++;
+// }
+
+// Aula 30 - Formulário
+// Select Box
+document.querySelector('#mostrar_opcao').onclick = function() {
+    let select = document.querySelector('#options');
+    let selectIndex = select.options.selectedIndex;
+
+    document.querySelector('#opcao_selecionada').innerHTML = select.options[selectIndex].textContent;
+};
+
+// Radio buttons
+document.querySelector('#mostrar_radio').onclick = function() {
+    let radio = document.getElementsByName('genero');
+    let select;
+
+    for (let i = 0; i < radio.length; i++) {
+        if ( radio[i].checked ) {
+            select = radio[i].value;
+            document.querySelector('#radio_selecionado').innerHTML = select;
+            break;
+        }
+    }    
+};
