@@ -418,3 +418,24 @@ document.querySelector('#mostrar_radio').onclick = function() {
         }
     }    
 };
+
+// Checked boxes
+document.querySelector('#mostrar_check').onclick = function() {
+    let check = document.getElementsByName('interesse');
+    let list = document.querySelector('#check_selecionado');
+
+    list.innerHTML = "";
+    for (let i = 0; i < check.length; i++) {
+        if ( check[i].checked ) {
+            list.innerHTML += '<li>' + check[i].value + '</li>';
+        }
+    }
+};
+
+// Date
+document.querySelector('#mostrar_data').onclick = function() {
+    let date_select = document.querySelector('#data_evento').value;
+    let date = new Date(date_select);
+
+    document.querySelector('#data_selecionada').innerHTML = date;
+};
