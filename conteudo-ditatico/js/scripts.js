@@ -398,44 +398,66 @@
 
 // Aula 30 - Formulário
 // Select Box
-document.querySelector('#mostrar_opcao').onclick = function() {
-    let select = document.querySelector('#options');
+// document.querySelector('#mostrar_opcao').onclick = function() {
+//     let select = document.querySelector('#options');
+//     let selectIndex = select.options.selectedIndex;
+
+//     document.querySelector('#opcao_selecionada').innerHTML = select.options[selectIndex].textContent;
+// };
+
+// // Radio buttons
+// document.querySelector('#mostrar_radio').onclick = function() {
+//     let radio = document.getElementsByName('genero');
+//     let select;
+
+//     for (let i = 0; i < radio.length; i++) {
+//         if ( radio[i].checked ) {
+//             select = radio[i].value;
+//             document.querySelector('#radio_selecionado').innerHTML = select;
+//             break;
+//         }
+//     }    
+// };
+
+// // Checked boxes
+// document.querySelector('#mostrar_check').onclick = function() {
+//     let check = document.getElementsByName('interesse');
+//     let list = document.querySelector('#check_selecionado');
+
+//     list.innerHTML = "";
+//     for (let i = 0; i < check.length; i++) {
+//         if ( check[i].checked ) {
+//             list.innerHTML += '<li>' + check[i].value + '</li>';
+//         }
+//     }
+// };
+
+// // Date
+// document.querySelector('#mostrar_data').onclick = function() {
+//     let date_select = document.querySelector('#data_evento').value;
+//     let date = new Date(date_select);
+
+//     document.querySelector('#data_selecionada').innerHTML = date;
+// };
+
+// Aula 31 - Evento onchange
+document.querySelector('#escolaridade').onchange = function() {
+    let select = document.querySelector('#escolaridade');
     let selectIndex = select.options.selectedIndex;
-
-    document.querySelector('#opcao_selecionada').innerHTML = select.options[selectIndex].textContent;
+    document.querySelector('#escolaridade_selecionada').innerHTML = select.options[selectIndex].textContent;
 };
 
-// Radio buttons
-document.querySelector('#mostrar_radio').onclick = function() {
-    let radio = document.getElementsByName('genero');
-    let select;
+let check = document.getElementsByName('lanche');
 
-    for (let i = 0; i < radio.length; i++) {
-        if ( radio[i].checked ) {
-            select = radio[i].value;
-            document.querySelector('#radio_selecionado').innerHTML = select;
-            break;
-        }
-    }    
-};
+for ( let i = 0; i < check.length; i++ ) {
+    check[i].onchange = function() {
+        let list = document.querySelector('#check_selecionado');
 
-// Checked boxes
-document.querySelector('#mostrar_check').onclick = function() {
-    let check = document.getElementsByName('interesse');
-    let list = document.querySelector('#check_selecionado');
-
-    list.innerHTML = "";
-    for (let i = 0; i < check.length; i++) {
-        if ( check[i].checked ) {
-            list.innerHTML += '<li>' + check[i].value + '</li>';
+        list.innerHTML = "";
+        for ( let j = 0; j < check.length; j++ ) {
+            if ( check[j].checked ) {
+                list.innerHTML += '<li>' + check[j].value + '</li>';
+            }
         }
     }
-};
-
-// Date
-document.querySelector('#mostrar_data').onclick = function() {
-    let date_select = document.querySelector('#data_evento').value;
-    let date = new Date(date_select);
-
-    document.querySelector('#data_selecionada').innerHTML = date;
-};
+}
