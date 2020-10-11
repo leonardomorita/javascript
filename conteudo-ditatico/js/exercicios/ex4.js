@@ -15,7 +15,7 @@ stateSelect.onchange = function() {
     window.localStorage.setItem('stateCountry', state);
 };
 
-// Sabendo que um pedido feito hoje em um site de e-commerce leva 12 dias para ser entregue com envio express e 18 dias com envio normal, preencha as informações abaixo com as datas no formato DIA-MÊS-ANO após a confirmação do pedido.
+// 2) Sabendo que um pedido feito hoje em um site de e-commerce leva 12 dias para ser entregue com envio express e 18 dias com envio normal, preencha as informações abaixo com as datas no formato DIA-MÊS-ANO após a confirmação do pedido.
 
 document.querySelector('#confirmar_pedido').onclick = function() {
     let dateObject = new Date();
@@ -58,19 +58,57 @@ document.querySelector('#confirmar_pedido').onclick = function() {
 };
 
 // 3) Faça funcionar o crônometro abaixo. O formato está em horas, minutos, segundos e milisegundos.
-document.querySelector('#comecar_parar').onclick = function() {
-    let date = new Date(2020, 11, 1, 0, 0, 0, 0);
-    window.setInterval(function() { 
-        const hours = date.getHours().toString();
-        const minutes = date.getMinutes().toString();
-        const seconds = date.getSeconds().toString();
-        const milliseconds = date.getMilliseconds().toString();
-        const out = hours + ':' + minutes + ':' + seconds + ' ' + milliseconds;
-    
-        document.querySelector('#cronometro').innerHTML = out;
+function addLeftZero(number) {
+    if ( number < 10 ) {
+        return '0' + number.toString();
+    }
+    return number.toString();
+}
 
-        date.setMilliseconds(date.getMilliseconds() + 4);
-    }, 1);
+let started = false, initialHour, currentHour, timeCronometer, startCronometer, hour, minutes, seconds, milliseconds;
+let button = document.querySelector('#comecar_parar');
+let cronometer = document.querySelector('#cronometro');
+
+button.onclick = function() {
+    if ( !started ) {
+        started = true;
+        button.innerHTML = 'Parar';
+
+        // Começar o cronômetro
+        if ( !initialHour ) {
+            initialHour = new Date().getTime();
+        } else {
+            initialHour = new Date().getTime() - timeCronometer;
+        }
+
+        startCronometer = window.setInterval(function() {
+            currentHour = new Date().getTime();
+            timeCronometer = currentHour - initialHour;
+
+            hour = Math.floor(timeCronometer / 3600000); // Divide o tempo passado pela quantidade de milisegundos que contém em 1 hora
+            rest = timeCronometer - (hour * 3600000); // Resto que sobrou será o minuto. A variável 'rest' guarda o valor em milisegundos
+            
+            minutes = Math.floor(rest / 60000); // Divide o valor restante pela quantidade de milisegundos que contém em 1 minuto
+            rest -= (minutes * 60000); // Resto que sobrou será o segundo. A variável 'rest' guarda o valor em milisegundos
+
+            seconds = Math.floor(rest / 1000); // Divide o valor restante pela quantidade de milisegundos que contém em 1 segundo
+            rest -= (seconds * 1000); // Resto que sobrou será o milisegundos. A variável 'rest' guarda o valor em milisegundos
+
+            milliseconds = rest;
+
+            cronometer.innerHTML = addLeftZero(hour) + ':' + addLeftZero(minutes) + ':' + addLeftZero(seconds) + ' ' + addLeftZero(milliseconds);
+        }, 10);
+    } else {
+        window.clearInterval(startCronometer);
+        started = false;
+        button.innerHTML = 'Começar';
+    } 
+};
+
+document.querySelector('#zerar').onclick = function() {
+    time = 0;
+    initialHour = new Date().getTime();
+    cronometer.innerHTML = "00:00:00 000";
 };
 
 
