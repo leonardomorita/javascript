@@ -79,7 +79,7 @@ var carros = [
 
     {
         'placa': 'AAA-0198',
-        'caregoria': '1',
+        'categoria': '1',
     },
 
     {
@@ -137,7 +137,7 @@ carros.forEach(function(carro) {
             total += 33.65;
             break;
         default:
-            return 'Esta categoria não existe.'
+            console.log('A categoria não existe.');
     }
 });
 document.querySelector('#faturamento_total').innerHTML = total.toFixed(2);
